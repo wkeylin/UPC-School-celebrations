@@ -31,6 +31,7 @@
 </template>
 <script>
 import api from "@/api/api.js";
+import he from "he";
 export default {
   name: "Artical",
   data() {
@@ -48,7 +49,7 @@ export default {
       let tmp =  this.artical[0].content.split(
         "<input type='hidden' id='pageNum' name='pageNum'  value='1'/><textarea id='pageContent0' name='pageContent0' style='display:none'>"
       )[1];
-      return tmp.split("</textarea>")[0];
+      return he.decode(tmp.split("</textarea>")[0]);
     }
   },
   methods: {
