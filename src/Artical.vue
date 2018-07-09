@@ -16,8 +16,8 @@
 		<div class="essay">
 			<div class="essay_title">{{artical[0].title}}</div>
 			<div class="message">
-				<p><span>时间：</span>{{artical[0].publishTime.split(" ")[0]}}</p>
-				<p><span>作者：</span>{{artical[0].author}}</p>
+				<span>时间：{{artical[0].publishTime.split(" ")[0]}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>作者：{{artical[0].author}}</span>
 			</div>
 			<div class="article">
         <p v-html="contentHtml"></p>
@@ -31,7 +31,7 @@
 </template>
 <script>
 import api from "@/api/api.js";
-import {artical} from "@/util/index.js"
+import {artical as art} from "@/util/index.js"
 import he from "he";
 export default {
   name: "Artical",
@@ -55,9 +55,9 @@ export default {
   },
   methods: {
     getData() {
-      api.article(this.$route.params.title, this.col).then(data => {
+      art(this.$route.params.title, this.col).then(data => {
         console.log(data);
-        this.artical = data.data;
+        this.artical = data;
       });
       api.list(this.$route.params.col, 1).then(data => {
         this.list = data.data;
@@ -128,16 +128,12 @@ export default {
   text-align: center;
 }
 .content .essay .message {
-  width: 280px;
   height: 20px;
   margin-left: 235px;
   margin-top: 25px;
 }
 .content .essay .message p:first-child {
   float: left;
-}
-.content .essay .message p:last-child {
-  float: right;
 }
 .content .essay .article {
   width: 100%;
