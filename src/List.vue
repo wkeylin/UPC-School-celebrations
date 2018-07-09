@@ -80,6 +80,7 @@ export default {
     },
     watch:{
       '$route'(to, from){
+          this.page = 1;
           this.updateTitle();
           this.getData();
       }
