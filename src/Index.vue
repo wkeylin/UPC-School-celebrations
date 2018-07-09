@@ -19,8 +19,8 @@
         <router-link :to="{name:'List',params:{col:875}}"><img style="width:65px;height:23px;margin-top:10px;margin-left:20px;" src="../static/more-blue.png" alt=""></router-link>
         <div class="xqdt_content">
           <div class="xqdt_hot">
-            <router-link :to="{name:'Artical', params: { title: xqdt[0].title ,col:875}}">
-              <img :src="xqdt[0].mircImgPath" alt="">
+            <router-link :to="{name:'Artical', params: { title: xqdt[0].title,col:875}}">
+              <img :src="xqdt[0].imgPath" alt="">
               <div class="hot_info">
                 <p class="title" style="-webkit-box-orient: vertical;">{{xqdt[0].title}}</p>
                 <span>{{xqdt[0].publishTime.split(" ")[0]}}</span>
@@ -158,7 +158,6 @@
 <script>
 import vueWaterfallEasy from "vue-waterfall-easy";
 import api from "@/api/api.js";
-import $ from "jquery";
 import {list} from "@/util/index.js"
 
 export default {
@@ -220,8 +219,9 @@ export default {
     }
   },
   mounted() {
-    api.list(875, 1).then(data => {
-      this.xqdt = data.data;
+    list(875, 1).then(data => {
+      console.log(data);
+      this.xqdt = data;
     });
     api.list(876, 1).then(data => {
       this.xqgg_list = data.data;
@@ -236,7 +236,6 @@ export default {
       this.xqsp = data.data;
     });
     list(883, 1).then(data => {
-      console.log(data);
       this.lunbolist = data;
     });
     api.list(879, 1).then(data => {
@@ -245,7 +244,7 @@ export default {
       this.imgsArr.forEach(item => {
         item.href = {
           name: "Artical",
-          params: { col: 879, title: item.title }
+          params: { col: 879, title: item.title  }
         };
       });
     });

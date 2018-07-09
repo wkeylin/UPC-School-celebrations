@@ -17,7 +17,7 @@
 			<div class="essay_title">{{artical[0].title}}</div>
 			<div class="message">
 				<p><span>时间：</span>{{artical[0].publishTime.split(" ")[0]}}</p>
-				<p><span>来源：</span>{{artical[0].source}}</p>
+				<p><span>作者：</span>{{artical[0].author}}</p>
 			</div>
 			<div class="article">
         <p v-html="contentHtml"></p>
@@ -31,6 +31,7 @@
 </template>
 <script>
 import api from "@/api/api.js";
+import {artical} from "@/util/index.js"
 import he from "he";
 export default {
   name: "Artical",

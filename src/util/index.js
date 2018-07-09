@@ -32,25 +32,81 @@ export function list(id, page) {
   var conditions = JSON.stringify(conditdata);
   return new Promise((resolve, reject) => {
     $.ajax({
-        url: "/_wp3services/generalQuery?queryObj=articles",
-        type: "POST",
-        contentType: "application/x-www-form-urlencoded; charset=utf-8",
-        async: false,
-        dataType: "json",
-        data: {
-          siteId: 100,
-          columnId: id,
-          pageIndex: page,
-          rows: 10,
-          conditions: conditions,
-          returnInfos: returnInfos
-        },
-        success: result => {
-            resolve(result.data, this)
-        },  
-        error:()=>{
-            reject("错误",this);
-        }
-      });
+      url: "/_wp3services/generalQuery?queryObj=articles",
+      type: "POST",
+      contentType: "application/x-www-form-urlencoded; charset=utf-8",
+      async: false,
+      dataType: "json",
+      data: {
+        siteId: 100,
+        columnId: id,
+        pageIndex: page,
+        rows: 10,
+        conditions: conditions,
+        returnInfos: returnInfos
+      },
+      success: result => {
+        resolve(result.data, this)
+      },
+      error: () => {
+        reject("错误", this);
+      }
+    });
+  })
+}
+
+export function artical(title, id) {
+  var returnInfosdata = [{
+      name: "title"
+    },
+    {
+      name: "visitCount"
+    },
+    {
+      name: "url"
+    },
+    {
+      name: "content"
+    },
+    {
+      name: "imgPath"
+    },
+    {
+      name: "coverImgPath"
+    },
+    {
+      name: "subTitle"
+    }, {
+      name: "author"
+    }
+  ];
+  var conditdata = [{
+    field: 'title',
+    value: title,
+    judge: '='
+  }];
+  var returnInfos = JSON.stringify(returnInfosdata);
+  var conditions = JSON.stringify(conditdata);
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: "/_wp3services/generalQuery?queryObj=articles",
+      type: "POST",
+      contentType: "application/x-www-form-urlencoded; charset=utf-8",
+      async: false,
+      dataType: "json",
+      data: {
+        siteId: 100,
+        columnId: id,
+        rows: 10,
+        conditions: conditions,
+        returnInfos: returnInfos
+      },
+      success: result => {
+        resolve(result.data, this)
+      },
+      error: () => {
+        reject("错误", this);
+      }
+    });
   })
 }
