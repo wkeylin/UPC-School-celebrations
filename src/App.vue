@@ -85,7 +85,7 @@ export default {
         },
         {
           name: "石光漫步",
-          url: { name: "Listpic", params: { col: 880 } },
+          url: { name: "Manbu", params: { col: 880 } },
           child: false
         },
         {

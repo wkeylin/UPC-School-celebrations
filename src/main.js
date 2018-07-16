@@ -7,7 +7,7 @@ import axios from 'axios'
 import "babel-polyfill"
 
 import 'normalize.css';
-import { Button,Loading} from 'element-ui';
+import ElementUI  from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
@@ -16,8 +16,8 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios;
-Vue.component(Button.name, Button);
-Vue.use(VueAwesomeSwiper)
+Vue.use(ElementUI );
+Vue.use(VueAwesomeSwiper);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

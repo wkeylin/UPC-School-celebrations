@@ -15,6 +15,12 @@ a {
   color: white;
 }
 
+.is-wait{
+  color: #666!important;
+}
+.is-finish{
+  color: #aa1a1a;
+}
 /*头部开始*/
 
 .head {

@@ -5,6 +5,7 @@ import Artical from '@/Artical'
 import List from '@/List'
 import Listpic from '@/Listpic'
 import Vedio from "@/Vedio"
+import Manbu from "@/Manbu"
 
 Vue.use(Router)
 
@@ -30,6 +31,10 @@ export default new Router({
       path:'/artical/vd/:col/:title',
       name:"Vedio",
       component:Vedio
+    },{
+      path:'/list/manbu/:col',
+      name:"Manbu",
+      component:Manbu
     }
   ]
 })

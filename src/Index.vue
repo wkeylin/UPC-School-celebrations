@@ -130,19 +130,19 @@
             <span :class="pic_showClass?'yxmb_active':''" @click="qiehuan('yx')">印象石大</span>
             <span :class="!pic_showClass?'yxmb_active':''" @click="qiehuan('mb')">石光漫步</span>
             <router-link class="more" v-if="pic_showClass" :to="{name:'Listpic',params:{col:879}}"><img class="yxmb_more" src="../static/more-blue.png" alt=""></router-link>
-            <router-link class="more" v-if="!pic_showClass" :to="{name:'Listpic',params:{col:880}}"><img class="yxmb_more" src="../static/more-blue.png" alt=""></router-link>
+            <router-link class="more" v-if="!pic_showClass" :to="{name:'Manbu',params:{col:880}}"><img class="yxmb_more" src="../static/more-blue.png" alt=""></router-link>
           </div>
           <div class="yxmb_container">
             <div class="yxmb_out" ref="yxmb_transform">
               <div v-show="pic_showClass" style="height:580px;">
-                <vue-waterfall-easy :imgsArr="imgsArr" :width="1240" :srcKey="'mircImgPath'" :isRouterLink=true>
+                <vue-waterfall-easy :width="855" :imgsArr="imgsArr" :width="1240" :srcKey="'mircImgPath'" :isRouterLink=true>
                     <div class="img-info" slot-scope="props">
                       <div class="img_title">{{props.value.title}}</div>
                     </div>
                 </vue-waterfall-easy>
               </div>
               <div v-show="!pic_showClass" style="height:580px;">
-                <vue-waterfall-easy :imgsArr="sgmb" :width="1240" :srcKey="'mircImgPath'" :isRouterLink=true>
+                <vue-waterfall-easy :width="855" :imgsArr="sgmb" :width="1240" :srcKey="'mircImgPath'" :isRouterLink=true>
                     <div class="img-info" slot-scope="props">
                       <div class="img_title">{{props.value.title}}</div>
                     </div>

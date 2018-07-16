@@ -12,26 +12,33 @@
 			<img src="../static/img7.jpg" alt="">
 		</div>
 		<!-- 新闻列表 -->
-		<div class="column" v-bind:style="{height:Eheight+'px'}">
-			<vue-waterfall-easy  :width="855" :isRouterLink=true :imgsArr="list" :width="855" :srcKey="'mircImgPath'" ref="picList" class="picList">
-        <div class="img-info" slot-scope="props">
-          <div class="img_title">{{props.value.title}}</div>
-        </div>
-      </vue-waterfall-easy>
+		<div class="column">
+            <div class="steps">
+                <el-steps :active="step" process-status="finish" finish-status="wait" simple>
+                    <el-step v-for="(item,index) in stepsTitle" @click.native="choose(index)" :key="item" :title="item" icon="el-icon-picture"></el-step>
+                </el-steps>
+            </div>
+            <div v-bind:style="{height:Eheight+'px'}">
+                <vue-waterfall-easy :width="855"  :isRouterLink=true :imgsArr="list" :width="855" :srcKey="'mircImgPath'" ref="picList" class="picList">
+                    <div class="img-info" slot-scope="props">
+                    <div class="img_title">{{props.value.title}}</div></div>
+                </vue-waterfall-easy>
+            </div>
 		</div>
-    <div class="current">
-        <el-row>
-          <el-button @click="pageLess">上一页</el-button>
-          <el-button @click="pageAdd">下一页</el-button>
-        </el-row>
-        <p>{{page}}/{{pageCount}}</p>
-    </div>
+        <div class="current">
+            <el-row>
+                <p>{{page}}/{{pageCount}}</p>
+                <el-button @click="pageLess">上一页</el-button>
+                <el-button @click="pageAdd">下一页</el-button>
+            </el-row>
+        </div>
 	</section>
 </template>
 <script>
 import api from "@/api/api.js";
 import vueWaterfallEasy from "vue-waterfall-easy";
 import _ from "lodash";
+import {listManbu} from "@/util/index.js"
 export default {
   data() {
     return {
@@ -41,14 +48,17 @@ export default {
       col: this.$route.params.col,
       colName: "",
       navList: [],
-      Eheight: 800
+      Eheight: 800,
+      step:0,
+      stepsTitle:['北京石油学院','华东石油学院','石油大学','中国石油大学（华东）'],
+      key:"北京石油学院",
     };
   },
   methods: {
     pageAdd() {
       if (this.page < this.pageCount) {
         this.page++;
-        this.getData();
+        this.getData(this.key);
       } else {
         alert("后面没有啦");
       }
@@ -56,7 +66,7 @@ export default {
     pageLess() {
       if (this.page > 1) {
         this.page--;
-        this.getData();
+        this.getData(this.key);
       } else {
         alert("已经是第一页啦");
       }
@@ -67,9 +77,11 @@ export default {
         return item.id === parseInt(this.$route.params.col);
       })[0];
     },
-    getData() {
-      api.list(this.$route.params.col, this.page).then(data => {
+    getData(key) {
+      listManbu(this.$route.params.col, this.page,key).then(data => {
+          console.log(data);
         this.pageCount = data.pageCount;
+
         this.list = data.data;
         this.list.forEach(item => {
           item.href = {
@@ -78,17 +90,16 @@ export default {
           };
         });
       });
-    }
-  },
-  watch: {
-    $route(to, from) {
-      this.page = 1;
-      this.updateTitle();
-      this.getData();
+    },
+    choose(index){
+        this.step = index;
+        this.page = 1;
+        this.getData(this.stepsTitle[index]);
+        this.key = this.stepsTitle[index];
     }
   },
   mounted() {
-    this.getData();
+    this.getData(this.stepsTitle[0]);
     api.nav().then(data => {
       this.navList = data;
       this.colName = this.navList.filter(item => {
@@ -102,6 +113,12 @@ export default {
 };
 </script>
 <style scoped>
+.el-step{
+    cursor: pointer;
+}
+.is-finish{
+    color:#d20010!important;
+}
 .vue-waterfall-easy-scroll {
   display: table;
 }
@@ -204,7 +221,7 @@ a.alink.img-inner-box {
 
 /*新闻列表css start*/
 .list .column {
-  padding-top: 68px;
+  padding-top: 20px;
   float: left;
   width: 855px;
   margin-left: 86px;
@@ -271,6 +288,14 @@ a.alink.img-inner-box {
   transform: rotate(180deg);
   margin-right: 25px;
 }
-
+.el-steps--simple{
+    height: 40px;
+    padding: 14px 0%!important;
+    background-color: #eee!important;
+}
+.el-step__head{
+    position: relative;
+    z-index: -1;
+}
 /*底部按钮css end*/
 </style>
