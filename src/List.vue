@@ -23,10 +23,10 @@
 			</div>
 			<div class="current">
 				<el-row>
+				<p>{{page}}/{{pageCount}}</p>
             <el-button @click="pageLess">上一页</el-button>
             <el-button @click="pageAdd">下一页</el-button>
         </el-row>
-				<p>{{page}}/{{pageCount}}</p>
 			</div>
 		</div>
 	</section>
