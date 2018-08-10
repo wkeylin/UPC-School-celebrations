@@ -4,9 +4,7 @@
       <div class="head_container">
         <img src="../static/school-logo.png" alt="">
         <div class="logo">
-          <img src="http://placehold.it/230x100" alt="">
-          <p class="logo_font"><img style="width:200px;margin-top: 10px;" src="../static/name.png" alt=""></p>
-          <p class="logo_year">1953-2018</p>
+          <img src="../static/logo3.png" alt="">
           <div class="weilei"></div>
         </div>
         <div class="countdown"><img style="width:143px;" src="../static/day1.png" alt=""><span>{{Days}}</span><img style="height:30px;" src="../static/day2.png" alt=""></div>
@@ -20,7 +18,7 @@
               <router-link :class="!navBarFixed?'color-black':'color-white'" :to="item.url">{{item.name}}</router-link>
             </li>
           </ul>
-          <img :class="navBarFixed?'logofixed':'logonofixed'" src="http://placehold.it/230x100" alt="">
+          <img :class="navBarFixed?'logofixed':'logonofixed'" src="../static/college-logo.png" alt="">
           <ul class="ul2">
             <li v-for="(item,index) in nav_lists" v-if="index > 3 && index< 7">
               <router-link :class="!navBarFixed?'color-black':'color-white'" :to="item.url">{{item.name}}</router-link>
