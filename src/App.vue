@@ -43,7 +43,7 @@
 
 <script>
 import _ from 'lodash';
-
+import moment from "moment";
 export default {
   name: "App",
   data() {
@@ -106,19 +106,15 @@ export default {
         this.navBarFixed = false;
       }
     },
-    DateDifference(Date1) {
-      //Date1和Date2是2017-07-10格式
-      var sDate, newDate1, newDate2, Days,aDate;
-      aDate = Date1.split("-");
-      newDate1 = new Date(aDate[1] + "-" + aDate[2] + "-" + aDate[0]); //转换为07-10-2017格式
-      newDate2 =_.now();
-      Days = parseInt(Math.abs(newDate1 - newDate2) / 1000 / 60 / 60 / 24); //把差的毫秒数转换为天数
-      return Days;
+    DateDifference() {
+      if (moment('2018/10/02', 'YYYY/MM/DD') > _.now())
+      return parseInt(Math.abs(moment('2018/10/02', 'YYYY/MM/DD') - _.now()) / 1000 / 60 / 60 / 24);
+      else return 0;
     }
   },
   computed:{
     Days(){
-      return this.DateDifference("2018-10-02");
+      return this.DateDifference();
     }
   },
   mounted() {
