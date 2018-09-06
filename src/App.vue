@@ -14,16 +14,16 @@
       <div class="nav">
         <div class="list" ref="nav_list">
           <ul class="ul1">
-            <li v-for="(item,index) in nav_lists" v-if="index <= 3">
+            <li v-for="(item,index) in nav_lists" v-if="index <= 3" :key="index">
               <router-link :class="!navBarFixed?'color-black':'color-white'" :to="item.url">{{item.name}}</router-link>
             </li>
           </ul>
           <img :class="navBarFixed?'logofixed':'logonofixed'" src="../static/college-logo.png" alt="">
           <ul class="ul2">
-            <li v-for="(item,index) in nav_lists" v-if="index > 3 && index< 7">
+            <li v-for="(item,index) in nav_lists" v-if="index > 3 && index< 7" :key="index">
               <router-link :class="!navBarFixed?'color-black':'color-white'" :to="item.url">{{item.name}}</router-link>
             </li>
-            <li :class="!navBarFixed?'color-black':'color-white'" v-for="(item,index) in nav_lists" v-if="index === 7">
+            <li :class="!navBarFixed?'color-black':'color-white'" v-for="(item,index) in nav_lists" v-if="index === 7" :key="index">
               <a :class="!navBarFixed?'color-black':'color-white'" :href="item.url">{{item.name}}</a>
             </li>
           </ul>
@@ -107,8 +107,8 @@ export default {
       }
     },
     DateDifference() {
-      if (moment('2018/10/02', 'YYYY/MM/DD') > _.now())
-      return parseInt(Math.abs(moment('2018/10/02', 'YYYY/MM/DD') - _.now()) / 1000 / 60 / 60 / 24);
+      if (moment('2018/10/01', 'YYYY/MM/DD') > _.now())
+      return _.ceil(_.divide(moment('2018/10/01', 'YYYY/MM/DD') - _.now(), (1000 * 60 * 60 * 24)));
       else return 0;
     }
   },

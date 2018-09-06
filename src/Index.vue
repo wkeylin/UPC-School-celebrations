@@ -1,7 +1,7 @@
 <template>
     <div>
         <swiper :options="swiperOption" style="height: auto;width:100%;">
-          <swiper-slide v-for="item in lunbolist"><router-link :to="{name:'Artical',params:{col:883,title:item.title}}"><img width="100%" :src="item.imgPath" alt=""></router-link></swiper-slide>
+          <swiper-slide v-for="(item, index) in lunbolist" :key="index"><router-link :to="{name:'Artical',params:{col:883,title:item.title}}"><img width="100%" :src="item.imgPath" alt=""></router-link></swiper-slide>
           <div class="swiper-pagination" slot="pagination"></div>
           <div class="swiper-button-prev" slot="button-prev"></div>
           <div class="swiper-button-next" slot="button-next"></div>
@@ -54,7 +54,7 @@
           </div>
           <div class="play_content">
             <ul ref="gg_transfrom" class="gg_transfrom">
-              <li v-for="item in xqgg_list">
+              <li v-for="(item,index) in xqgg_list" :key="index">
                  <router-link :to="{name:'Artical', params: { title: item.title ,col:876}}">
                 <div class="artical">
                   <p class="art_title" style="-webkit-box-orient: vertical;">{{item.title}}</p>
@@ -88,7 +88,7 @@
             </div>
             <div class="xyfc_list">
               <ul>
-                <li v-for="(item,index) in xyfc" v-if="index > 0&& index <9"> <router-link :to="{name:'Artical', params: { title: item.title ,col:877}}"><span class="mark"></span>{{item.title}}</router-link></li>
+                <li v-for="(item,index) in xyfc" v-if="index > 0&& index <9" :key="index"> <router-link :to="{name:'Artical', params: { title: item.title ,col:877}}"><span class="mark"></span>{{item.title}}</router-link></li>
               </ul>
             </div>
           </div>
@@ -135,14 +135,14 @@
           <div class="yxmb_container">
             <div class="yxmb_out" ref="yxmb_transform">
               <div v-show="pic_showClass" style="height:580px;">
-                <vue-waterfall-easy :width="855" :imgsArr="imgsArr" :width="1240" :srcKey="'mircImgPath'" :isRouterLink=true>
+                <vue-waterfall-easy :imgsArr="imgsArr" width="1240" :srcKey="'mircImgPath'" :isRouterLink=true>
                     <div class="img-info" slot-scope="props">
                       <div class="img_title">{{props.value.title}}</div>
                     </div>
                 </vue-waterfall-easy>
               </div>
               <div v-show="!pic_showClass" style="height:580px;">
-                <vue-waterfall-easy :width="855" :imgsArr="sgmb" :width="1240" :srcKey="'mircImgPath'" :isRouterLink=true>
+                <vue-waterfall-easy :imgsArr="sgmb" width="1240" :srcKey="'mircImgPath'" :isRouterLink=true>
                     <div class="img-info" slot-scope="props">
                       <div class="img_title">{{props.value.title}}</div>
                     </div>

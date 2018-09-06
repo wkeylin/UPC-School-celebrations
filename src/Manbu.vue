@@ -19,7 +19,7 @@
                 </el-steps>
             </div>
             <div v-bind:style="{height:Eheight+'px'}">
-                <vue-waterfall-easy :width="855"  :isRouterLink=true :imgsArr="list" :width="855" :srcKey="'mircImgPath'" ref="picList" class="picList">
+                <vue-waterfall-easy :width="855"  :isRouterLink=true :imgsArr="list" :srcKey="'mircImgPath'" ref="picList" class="picList">
                     <div class="img-info" slot-scope="props">
                     <div class="img_title">{{props.value.title}}</div></div>
                 </vue-waterfall-easy>

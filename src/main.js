@@ -10,6 +10,7 @@ import 'normalize.css';
 import ElementUI  from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import _ from 'lodash';
 
 import 'swiper/dist/css/swiper.css'
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
