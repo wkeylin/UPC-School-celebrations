@@ -262,7 +262,7 @@ a {
   content: "";
   display: block;
   width: 5px;
-  height: 5px;
+  height: 3px;
   border-radius: 50%;
   background: #ffffff;
   position: absolute;
@@ -362,8 +362,8 @@ a {
   content: "";
   display: block;
   width: 120px;
-  height: 0;
-  border: 3px solid #d30717;
+  height: 4px;
+  background-color: #d30717;
   position: relative;
   top: -12px;
   left: -10px;
@@ -435,7 +435,7 @@ overflow: hidden;
   content: "";
   display: block;
   width: 80px;
-  height: 6px;
+  height: 4px;
   background: #d30717;
   transition: all .4s linear;
 }
@@ -609,7 +609,7 @@ overflow: hidden;
   content: "";
   display: block;
   width: 100px;
-  height: 8px;
+  height: 4px;
   background-color: #ff9999;
   margin-bottom: 10px;
   transition: width .4s linear;
@@ -649,6 +649,7 @@ overflow: hidden;
   width: 1280px;
   height: 100%;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .xyfc {
@@ -709,7 +710,7 @@ overflow: hidden;
   content: "";
   display: block;
   width: 80px;
-  height: 6px;
+  height: 4px;
   background: #d30717;
   transition: all .4s linear;
 }
@@ -845,12 +846,19 @@ overflow: hidden;
 /*校友活动结束*/
 
 /*校庆视频开始*/
-
+.xqsp {
+  width: 800px;
+}
 .xqsp img {
   width: 100%;
-  height: 255px;
+  height: 295px;
 }
-
+.xqsp_p {
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin-top: 20px;
+}
 .vedio {
   width: 150px;
   height: 100%;
@@ -862,7 +870,7 @@ overflow: hidden;
 }
 
 .xqsp_info {
-  height: 107px;
+  height: 66px;
 }
 
 .xqsp_title {
@@ -880,7 +888,45 @@ overflow: hidden;
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
-
+.xqsp_list {
+  display: block;
+  float: left;
+  width: auto;
+  height: 365px;
+  margin-top: 10px;
+  margin-left: 60px;
+}
+.xqsp_list ul li {
+  cursor: pointer;
+  display: block;
+  width: 350px;
+  list-style: none;
+  font-size: 15px;
+  line-height: 20px;
+  background-color: rgb(247, 247, 247);
+  box-shadow: 0px 6px 6.51px 0.49px rgba(0, 0, 0, 0.2);
+  height: 100px;
+  border-radius: 5px;
+  transition: all .45s ease;
+  box-sizing: border-box;
+  padding: 10px;
+  position: relative;
+}
+.xqsp_list ul li + li {
+  margin-top: 25px;
+}
+.xqsp_list ul li:hover{
+  transition: all .45s ease;
+  transform: translate3d(0, -2px, 0);
+}
+.xqsp_list ul li a {
+  color: black;
+}
+.xqsp_list ul li p{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
 /*校庆视频结束*/
 
 /*印象石大和石光漫步开始*/

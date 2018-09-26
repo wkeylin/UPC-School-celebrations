@@ -93,6 +93,19 @@
             </div>
           </div>
         </div>
+        <div class="xyfc fhs_item">
+          <div class="xyfc_logo">
+            <img src="../static/xyzw.png" alt="">
+            <router-link class="more" :to="{name:'List',params:{col:891}}"></router-link>
+          </div>
+          <div class="list_container xyfc_animation" style="background-color:white;">
+            <div class="xyfc_list">
+              <ul>
+                <li v-for="(item,index) in xyzw" v-if="index < 12" :key="index"> <router-link :to="{name:'Artical', params: { title: item.title ,col:891}}"><span class="mark"></span>{{item.title}}</router-link></li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <div class="xyfc" style="margin:0 20px;">
           <div class="xyfc_logo">
             <img src="../static/xyhd.png" alt="">
@@ -109,19 +122,24 @@
             </div>
           </div>
         </div>
-        <div class="xyfc">
+        <div class="xyfc xqsp_p">
           <div class="xyfc_logo">
             <img src="../static/xqsp.png" alt="">
             <router-link class="more" :to="{name:'List',params:{col:882}}"></router-link>
           </div>
-          <div class="list_container xqsp xyfc_animation"  style="background-color:white;">
+          <div class="list_container xqsp xyfc_animation"  style="background-color:white;float:left;">
             <router-link :to="{name:'Vedio', params: { title: xqsp[0].title ,col:882}}">
-            <img :src="xqsp[0].mircImgPath" alt="">
+            <img :src="xqsp[0].imgPath" alt="">
             <div class="xqsp_info">
               <div class="vedio"></div>
               <div class="xqsp_title">{{xqsp[0].title}}</div>
             </div>
             </router-link>
+          </div>
+          <div class="xqsp_list">
+            <ul class="xqsp_container">
+              <li v-for="(item,index) in xqsp" v-if="index > 0 && index < 4" :key="index"> <router-link :to="{name:'Vedio', params: { title: item.title ,col:882}}">{{item.title}}<p style="text-align:right;">{{item.publishTime.split(" ")[0]}}</p></router-link></li>
+            </ul>
           </div>
         </div>
         <div class="yxmb">
@@ -220,7 +238,6 @@ export default {
   },
   mounted() {
     list(875, 1).then(data => {
-      console.log(data);
       this.xqdt = data;
     });
     api.list(876, 1).then(data => {
@@ -232,15 +249,14 @@ export default {
     api.list(878, 1).then(data => {
       this.xyhd = data.data;
     });
-    api.list(882, 1).then(data => {
-      this.xqsp = data.data;
+    list(882, 1).then(data => {
+      this.xqsp = data;
     });
     list(883, 1).then(data => {
       this.lunbolist = data;
     });
     api.list(879, 1).then(data => {
       this.imgsArr = data.data;
-      console.log(data);
       this.imgsArr.forEach(item => {
         item.href = {
           name: "Artical",
@@ -248,10 +264,12 @@ export default {
         };
       });
     });
+    api.list(891, 1).then(data => {
+      this.xyzw = data.data;
+    });
   },
   components: {
     vueWaterfallEasy
   }
 };
 </script>
-
