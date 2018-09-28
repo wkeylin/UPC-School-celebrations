@@ -196,7 +196,9 @@ a {
   width: 41%;
   overflow: hidden;
 }
-
+.ul1 li{
+  width: 20%!important;
+}
 .list .ul1 {
   float: left;
 }
@@ -216,9 +218,14 @@ a {
   transition: 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.list li:hover:after {
+.ul2 li:hover:after {
   left: 30px;
   right: 32px;
+}
+
+.ul1 li:hover:after {
+  left: 18px;
+  right: 16px;
 }
 
 .fixed {

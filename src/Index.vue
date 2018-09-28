@@ -214,7 +214,6 @@ export default {
         this.pic_showClass = false;
         api.list(880, 1).then(data => {
           this.sgmb = data.data;
-          console.log(data);
           this.sgmb.forEach(item => {
             item.href = {
               name: "Artical",

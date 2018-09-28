@@ -14,13 +14,13 @@
       <div class="nav">
         <div class="list" ref="nav_list">
           <ul class="ul1">
-            <li v-for="(item,index) in nav_lists" v-if="index <= 3" :key="index">
+            <li v-for="(item,index) in nav_lists" v-if="index <= 4" :key="index">
               <router-link :class="!navBarFixed?'color-black':'color-white'" :to="item.url">{{item.name}}</router-link>
             </li>
           </ul>
           <img :class="navBarFixed?'logofixed':'logonofixed'" src="../static/college-logo.png" alt="">
           <ul class="ul2">
-            <li v-for="(item,index) in nav_lists" v-if="index > 3 && index< 7" :key="index">
+            <li v-for="(item,index) in nav_lists" v-if="index > 4 && index< 9" :key="index">
               <router-link :class="!navBarFixed?'color-black':'color-white'" :to="item.url">{{item.name}}</router-link>
             </li>
             <li :class="!navBarFixed?'color-black':'color-white'" v-for="(item,index) in nav_lists" v-if="index === 7" :key="index">
@@ -69,6 +69,10 @@ export default {
         {
           name: "校友风采",
           url: { name: "List", params: { col: 877 } },
+          child: false
+        },{
+          name: "校友撰文",
+          url: { name: "List", params: { col: 891 } },
           child: false
         },
         {
