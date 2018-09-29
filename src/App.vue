@@ -20,10 +20,10 @@
           </ul>
           <img :class="navBarFixed?'logofixed':'logonofixed'" src="../static/college-logo.png" alt="">
           <ul class="ul2">
-            <li v-for="(item,index) in nav_lists" v-if="index > 4 && index< 9" :key="index">
+            <li v-for="(item,index) in nav_lists" v-if="index > 4 && index< 8" :key="index">
               <router-link :class="!navBarFixed?'color-black':'color-white'" :to="item.url">{{item.name}}</router-link>
             </li>
-            <li :class="!navBarFixed?'color-black':'color-white'" v-for="(item,index) in nav_lists" v-if="index === 7" :key="index">
+            <li :class="!navBarFixed?'color-black':'color-white'" v-for="(item,index) in nav_lists" v-if="index === 8" :key="index">
               <a :class="!navBarFixed?'color-black':'color-white'" :href="item.url">{{item.name}}</a>
             </li>
           </ul>

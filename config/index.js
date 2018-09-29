@@ -51,7 +51,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/_upload/tpl/01/93/403/template403/',
+    assetsPublicPath: '/_upload/tpl/01/92/402/template402/',
 
     /**
      * Source Maps
